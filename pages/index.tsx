@@ -8,14 +8,15 @@ export const getServerSideProps = async ({
   req,
 }: GetServerSidePropsContext) => {
   console.log(req);
-
+  const { headers } = req;
+  const accessDomain = headers?.host || "";
   return {
-    props: { req },
+    props: { header: req.headers },
   };
 };
 
-export default function Home({ req }) {
-  console.log(req);
+export default function Home({ header }) {
+  console.log(header);
 
   return (
     <div className={styles.container}>
